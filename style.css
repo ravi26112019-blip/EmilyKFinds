@@ -97,8 +97,8 @@ main {
 }
 
 .bio-card__verified-icon {
-    width: 18px;
-    height: 18px;
+    width: 1rem;
+    height: 1rem;
     position: absolute;
     left: 100%;
     top: 50%;
