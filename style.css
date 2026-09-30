@@ -5,42 +5,20 @@
 }
 
 body {
-    background: whitesmoke;
     min-height: 100svh;
     display: flex;
-    justify-content: center;
-    user-select: none;
-    font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
-}
-
-main {
-    position: relative;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 450px;
-    width: 100%;
-    min-height: 100vh;
+    user-select: none;
+    font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-.top-banner {
+.bio-card__bg-curve {
+    fill: #f0f4f8;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 180px;
-    background-image: url('background-img.png');
-    background-size: cover;
-    background-position: center;
-    clip-path: ellipse(80% 80% at 50% 0);
-}
-
-.profile-pic {
-    aspect-ratio: 1;
-    width: clamp(130px, 35vw, 150px);
-    border-radius: 50%;
-    border: 4px solid #ffffff;
-    margin-top: -120px;
-    position: relative;
-    z-index: 10;
-    pointer-events: none;
+    z-index: -1;
 }
 
 .bio-card {
@@ -50,29 +28,31 @@ main {
     align-items: center;
     text-align: center;
     gap: 0.8rem;
+    padding-block: 3rem 0.5rem;
+    margin: 0 auto;
+    max-width: 500px;
     width: 100%;
+    position: relative;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bio-card__share-btn {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: #ffffff83;
     border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    color: #ffffff;
+    color: #222222;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.2s ease;
-    position: fixed;
+    box-shadow: 0 4px 10px #00000014;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    position: absolute;
     top: 0;
     right: 0;
     margin: 1.5rem;
-    z-index: 20;
 }
 
 .bio-card__share-btn i {
@@ -81,49 +61,39 @@ main {
 
 .bio-card__share-btn:hover {
     transform: scale(1.08);
+    background-color: #ffffffc2;
+}
+
+.bio-card__avatar-box {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 3px #b2b1b1;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.bio-card__avatar-img {
+    width: 100px;
+    transform: scale(1.3);
+    object-position: center 2px;
+    pointer-events: none;
 }
 
 .bio-card__user-info {
+    display: grid;
+    gap: 0.2rem;
     width: 90%;
 }
 
-.bio-card__title {
-    display: inline-block;
-    position: relative;
-    font-size: 1.8rem;
-    margin: 0 auto;
-    color: #ac2424;
-    font-weight: 700;
-}
-
-.bio-card__verified-icon {
-    width: 1rem;
-    height: 1rem;
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 6px;
-}
-
-.sub-info {
-    display: grid;
-    gap: 0.4rem;
-}
-
-.bio-card__handle {
-    color: #a3a3a3;
+.bio-card__desc {
     font-size: 1rem;
+    color: #484848;
 }
 
 .bio-card__tag {
     color: #787878;
-    font-weight: 600;
-}
-
-.bio-card__desc {
-    font-size: 0.95rem;
-    color: #484848;
+    font-weight: 500;
 }
 
 .bio-card__links {
@@ -136,8 +106,8 @@ main {
 
 .bio-card__link-item {
     text-decoration: none;
-    background: #ac2424;
-    color: whitesmoke;
+    background: #f0f4f8;
+    color: black;
     font-weight: 600;
     border-radius: 2rem;
     padding: 0.8rem;
@@ -153,12 +123,12 @@ main {
     margin-top: 0.75rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.6rem;
 }
 
 .bio-card__social-icon {
     font-size: 24px;
-    color: #888888;
+    color: #949494;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -167,19 +137,26 @@ main {
     transform: scale(1.1);
 }
 
-.fa-instagram:hover { color: #ff00ee; }
-.fa-facebook:hover { color: #1877f2; }
-.fa-youtube:hover { color: #ff0000; }
+.fa-instagram:hover {
+    color: #ff00ee;
+}
+
+.fa-youtube:hover {
+    color: #ff0000;
+}
+
+.fa-facebook:hover {
+    color: #1877f2;
+}
 
 .bio-card__disclosure {
     margin-top: auto;
     font-size: 0.7rem;
     color: #8d8b8b;
-    padding-inline: 1rem;
 }
 
 .bio-card__footer {
-    background: #e7e7e7;
+    background: #f0f4f8;
     color: #454545;
     font-size: 0.80rem;
     font-weight: 500;
@@ -190,19 +167,15 @@ main {
     width: 100%;
 }
 
-/* Responsive Desktop Rules */
-@media (min-width: 450px) {
-    main {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        border-radius: 1rem;
-        border: 1px solid #ddd;
-        overflow: hidden;
-        min-height: auto;
+@media(min-width: 500px) {
+    .bio-card__bg-curve {
+        display: none;
     }
 
-    .bio-card__share-btn {
-        position: absolute;
+    .bio-card {
+        margin-top: 3rem;
+        box-shadow: 0 3px 10px #ddd;
+        border-radius: 1rem 1rem 0 0;
+        border: 1px solid #ddd;
     }
 }
